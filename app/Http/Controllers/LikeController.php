@@ -3,46 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Like;
+use App\Models\Tweet;
 
 class LikeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    // Toggle like/unlike on a tweet
+    public function toggleLike($id)
     {
-        //
-    }
+        $tweet = Tweet::findOrFail($id);
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $existingLike = Like::where('tweet_id', $tweet->id)
+                            ->where('user_id', auth()->id())
+                            ->first();
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        if ($existingLike) {
+            $existingLike->delete();
+            return response()->json(['message' => 'Tweet unliked']);
+        } else {
+            Like::create([
+                'tweet_id' => $tweet->id,
+                'user_id' => auth()->id()
+            ]);
+            return response()->json(['message' => 'Tweet liked']);
+        }
     }
 }
