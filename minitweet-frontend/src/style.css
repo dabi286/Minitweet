@@ -1,11 +1,19 @@
+@import "tailwindcss";
+@layer base {
+  html {
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+}
+
+/* ========== Base Global Styles ========== */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #213547;
+  background-color: #f7f7f8; /* Softer neutral background for modern look */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,67 +21,147 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ========== Links ========== */
 a {
   font-weight: 500;
   color: #646cff;
-  text-decoration: inherit;
+  text-decoration: none;
 }
+
 a:hover {
   color: #535bf2;
 }
 
+/* ========== Body Layout ========== */
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  display: flex; /* replaces inline-block so page fills full width */
+  flex-direction: column;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #f7f7f8; /* consistent with root */
+  color: #213547;
 }
 
+/* ========== Headings & Text ========== */
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  font-weight: 700;
 }
 
+/* ========== Buttons ========== */
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 3px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  color: white;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.25s ease-in-out;
 }
+
+.tweet-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #1da1f2; /* Twitter blue */
+  color: white;
+  font-weight: 600;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 15px; /* pill shape */
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(29, 161, 242, 0.3);
+  transition: all 0.2s ease-in-out;
+}
+
+.tweet-btn:hover {
+  background-color: #0d8ae8;
+  box-shadow: 0 4px 10px rgba(29, 161, 242, 0.4);
+}
+
+.tweet-btn:active {
+  background-color: #0b7ec4;
+  transform: scale(0.97);
+}
+
+.tweet-btn .icon {
+  width: 18px;
+  height: 18px;
+  fill: white;
+}
+
+
+
+
 button:hover {
+  background-color: #333;
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 3px solid #646cff;
 }
 
-.card {
-  padding: 2em;
-}
-
+/* ========== App Container ========== */
 #app {
-  max-width: 1280px;
+  width: 100%;
+  max-width: 100%; /* allow full expansion */
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  padding: 0;
+  text-align: left; /* reset center alignment */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
+/* ========== Cards ========== */
+.card {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.tweet-hover {
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.tweet-hover:hover {
+  background-color: #f9fafb;
+  transform: scale(1.08);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
+
+/* ========== Light Mode Adjustments ========== */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #f7f7f8;
   }
-  a:hover {
-    color: #747bff;
-  }
+
   button {
     background-color: #f9f9f9;
+    color: #213547;
+  }
+
+  button:hover {
+    background-color: #eaeaea;
   }
 }
+

@@ -74,8 +74,7 @@ const handleLogin = async () => {
 <template>
   <div
     class="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-100 to-blue-100 font-[Poppins]">
-    <div
-      class="relative w-[950px] h-[520px] bg-white rounded-2xl shadow-2xl overflow-hidden flex transition-all duration-700 md:scale-[1.1] lg:scale-[1.25]">
+    <div class="relative w-[950px] h-[520px] bg-white rounded-2xl shadow-2xl overflow-hidden flex transition-all duration-700 md:scale-[1.1] lg:scale-[1.25]">
       <div class="absolute inset-0 overflow-hidden">
         <div class="absolute left-0 top-0 w-1/2 h-full flex flex-col justify-center items-center px-12 bg-white 
           transition-all duration-700 ease-in-out z-20" :class="isSignUp
