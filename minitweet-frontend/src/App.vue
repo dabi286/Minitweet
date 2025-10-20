@@ -1,14 +1,30 @@
-<template>
-  <!-- Vue Router will render the active page (Login, Register, or Feed) here -->
-  <router-view />
-</template>
-
 <script setup>
-// ✅ No need for manual switching logic anymore
-// Vue Router automatically handles which page to show based on the URL
+import HelloWorld from './components/HelloWorld.vue'
 </script>
 
-<style>
-/* Optional: You can add global styling adjustments here */
+<template>
+  <div>
+    <a href="https://vite.dev" target="_blank">
+      <img src="/vite.svg" class="logo" alt="Vite logo" />
+    </a>
+    <a href="https://vuejs.org/" target="_blank">
+      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
+    </a>
+  </div>
+  <HelloWorld msg="Vite + Vue" />
+</template>
 
+<style scoped>
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.vue:hover {
+  filter: drop-shadow(0 0 2em #42b883aa);
+}
 </style>
